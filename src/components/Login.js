@@ -1,18 +1,21 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { userData } from "../../utils/userData";
 function Login() {
     const [username, setUserName] = useState("");
     const [password, setPassword] = useState("");
     let history = useHistory();
     function handleClick(e) {
         e.preventDefault();
-        if (username === "abc" && password === "123") {
-            window.localStorage.setItem("username", "abc");
-            window.localStorage.setItem("password", "123");
-            history.push("/profile");
-        } else {
-            setUserName("");
-            setPassword("");
+        for (let data of userData) {
+            if (username === data.username && password === data.password) {
+                window.localStorage.setItem("username", data.username);
+                window.localStorage.setItem("password", data.password);
+                history.push("/main");
+            } else {
+                setUserName("");
+                setPassword("");
+            }
         }
     }
 
