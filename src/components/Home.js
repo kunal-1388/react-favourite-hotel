@@ -12,7 +12,7 @@ function Home() {
                 </li>
                 <li>
                     <Link id="main" to="/main">
-                        Favourites
+                        Main
                     </Link>
                 </li>
             </ul>

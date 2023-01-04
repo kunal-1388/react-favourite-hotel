@@ -4,6 +4,7 @@ import Login from "./Login";
 import Home from "./Home";
 import MainPage from "./MainPage";
 import PrivateRoute from "./PrivateRoute";
+import Favourites from "./Favourites";
 const App = () => {
     return (
         <div id="main">
@@ -13,6 +14,7 @@ const App = () => {
                 <PrivateRoute exact path="/main">
                     <MainPage />
                 </PrivateRoute>
+                <Route exact path="/favourites" component={Favourites}></Route>
             </Switch>
         </div>
     );
