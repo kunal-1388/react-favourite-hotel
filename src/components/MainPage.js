@@ -5,13 +5,17 @@ import "../styles/MainPage.css";
 import { Link } from "react-router-dom";
 function MainPage() {
     return (
-        <div id="main">
-            <Link id="favourites" to="/favourites">
-                My Favourites
-            </Link>
-            {hotelData.map((hotel) => (
-                <Hotel data={hotel} />
-            ))}
+        <div>
+            <div>
+                <Link id="favourites" to="/favourites">
+                    My Favourites
+                </Link>
+            </div>
+            <div id="main">
+                {hotelData.map((hotel) => (
+                    <Hotel data={hotel} />
+                ))}
+            </div>
         </div>
     );
 }
