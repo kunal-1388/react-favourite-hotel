@@ -1,5 +1,7 @@
 import React from "react";
 import "../styles/Hotel.css";
+import { Link } from "react-router-dom";
+
 function Favourites() {
     const myFavouritesList =
         JSON.parse(window.localStorage.getItem("favourites")) || [];
@@ -18,29 +20,44 @@ function Favourites() {
         e.target.parentElement.remove();
     }
 
+    function handleSignOut() {
+        window.localStorage.removeItem("username");
+        window.localStorage.removeItem("password");
+    }
+
     return (
-        <div style={styles}>
-            {myFavouritesList.map((hotel) => {
-                return (
-                    <div className="card">
-                        <div className="card-image">
-                            <img src={hotel.img} />
+        <div>
+            <div>
+                <Link to="/" onClick={handleSignOut}>
+                    Logout
+                </Link>
+            </div>
+            <div style={styles}>
+                {myFavouritesList.map((hotel) => {
+                    return (
+                        <div className="card">
+                            <div className="card-image">
+                                <img src={hotel.img} />
+                            </div>
+                            <div className="card-text">
+                                <h2>{hotel.name}</h2>
+                                <span className="location">
+                                    {" "}
+                                    {hotel.location}
+                                </span>
+                                <h4>Rs. {hotel.price} per night</h4>
+                            </div>
+                            <button
+                                id={hotel.id}
+                                className="button"
+                                onClick={handleClick}
+                            >
+                                Delete
+                            </button>
                         </div>
-                        <div className="card-text">
-                            <h2>{hotel.name}</h2>
-                            <span className="location"> {hotel.location}</span>
-                            <h4>Rs. {hotel.price} per night</h4>
-                        </div>
-                        <button
-                            id={hotel.id}
-                            className="button"
-                            onClick={handleClick}
-                        >
-                            Delete
-                        </button>
-                    </div>
-                );
-            })}
+                    );
+                })}
+            </div>
         </div>
     );
 }
