@@ -1,21 +1,36 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import Navbar from "./Navbar";
+import { hotelData } from "../../utils/hotelData.js";
+import "../styles/Hotel.css";
 function Home() {
     return (
         <div>
-            <ul>
-                <li>
-                    <Link id="login" to="/login">
-                        LogIn
-                    </Link>
-                </li>
-                <li>
-                    <Link id="main" to="/main">
-                        Main
-                    </Link>
-                </li>
-            </ul>
+            <Navbar
+                links={[
+                    ["Login", "/login"],
+                    ["Main", "/main"],
+                ]}
+            />
+            <div id="main">
+                {hotelData.map((hotel) => {
+                    return (
+                        <div className="card">
+                            <div className="card-image">
+                                <img src={hotel.img} />
+                            </div>
+                            <div className="card-text">
+                                <h2>{hotel.name}</h2>
+                                <span className="location">
+                                    {" "}
+                                    {hotel.location}
+                                </span>
+                                <h4>Rs. {hotel.price} per night</h4>
+                            </div>
+                        </div>
+                    );
+                })}
+            </div>
         </div>
     );
 }

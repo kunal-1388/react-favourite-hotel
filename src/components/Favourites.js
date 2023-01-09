@@ -1,7 +1,8 @@
 import React from "react";
 import "../styles/Hotel.css";
 import { Link } from "react-router-dom";
-
+import Navbar from "./Navbar";
+import "../styles/MainPage.css";
 function Favourites() {
     const myFavouritesList =
         JSON.parse(window.localStorage.getItem("favourites")) || [];
@@ -23,15 +24,24 @@ function Favourites() {
     function handleSignOut() {
         window.localStorage.removeItem("username");
         window.localStorage.removeItem("password");
+        window.localStorage.removeItem("favourites");
     }
 
     return (
         <div>
-            <div>
+            <Navbar
+                links={[
+                    ["Logout", "/"],
+                    ["Go Back", "/main"],
+                ]}
+                handleSignOut={handleSignOut}
+            />
+            {/* <div>
+
                 <Link to="/" onClick={handleSignOut}>
                     Logout
                 </Link>
-            </div>
+            </div> */}
             <div style={styles}>
                 {myFavouritesList.map((hotel) => {
                     return (

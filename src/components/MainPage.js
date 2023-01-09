@@ -3,6 +3,7 @@ import Hotel from "./Hotel";
 import { hotelData } from "../../utils/hotelData.js";
 import "../styles/MainPage.css";
 import { Link } from "react-router-dom";
+import Navbar from "./Navbar";
 function MainPage() {
     function handleSignOut() {
         window.localStorage.removeItem("username");
@@ -11,7 +12,13 @@ function MainPage() {
 
     return (
         <div>
-            <div>
+            <Navbar
+                links={[
+                    ["My Favourites", "/favourites"],
+                    ["Logout", "/"],
+                ]}
+            />
+            {/* <div>
                 <Link id="favourites" to="/favourites">
                     My Favourites
                 </Link>
@@ -20,7 +27,7 @@ function MainPage() {
                 <Link to="/" onClick={handleSignOut}>
                     Logout
                 </Link>
-            </div>
+            </div> */}
 
             <div id="main">
                 {hotelData.map((hotel) => (
