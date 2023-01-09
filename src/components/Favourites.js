@@ -31,8 +31,8 @@ function Favourites() {
         <div>
             <Navbar
                 links={[
-                    ["Logout", "/"],
                     ["Go Back", "/main"],
+                    ["Logout", "/"],
                 ]}
                 handleSignOut={handleSignOut}
             />

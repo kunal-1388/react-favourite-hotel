@@ -8,6 +8,8 @@ function MainPage() {
     function handleSignOut() {
         window.localStorage.removeItem("username");
         window.localStorage.removeItem("password");
+        window.localStorage.removeItem("favourites");
+
     }
 
     return (
@@ -17,6 +19,7 @@ function MainPage() {
                     ["My Favourites", "/favourites"],
                     ["Logout", "/"],
                 ]}
+                handleSignOut={handleSignOut}
             />
             {/* <div>
                 <Link id="favourites" to="/favourites">

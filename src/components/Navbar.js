@@ -9,12 +9,12 @@ function Navbar(props) {
             <div className="navbar">
                 <ul className="nav-item">
                     <li className="nav-link">
-                        <Link to={pointsTo1} onClick={props.handleSignOut}>
-                            {link1}{" "}
-                        </Link>
+                        <Link to={pointsTo1}>{link1}</Link>
                     </li>
                     <li className="nav-link">
-                        <Link to={pointsTo2}>{link2}</Link>
+                        <Link to={pointsTo2} onClick={props.handleSignOut}>
+                            {link2}
+                        </Link>
                     </li>
                 </ul>
             </div>
