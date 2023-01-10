@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { userData } from "../../utils/userData";
 import "../styles/Login.css";
+import { LoginContext } from "../Context/LoginContext";
 function Login() {
     const [username, setUserName] = useState("");
     const [password, setPassword] = useState("");
+    const { setIsLogin } = useContext(LoginContext);
     let history = useHistory();
     function handleClick(e) {
         e.preventDefault();
@@ -12,7 +14,8 @@ function Login() {
             if (username === data.username && password === data.password) {
                 window.localStorage.setItem("username", data.username);
                 window.localStorage.setItem("password", data.password);
-                history.push("/main");
+                setIsLogin(true);
+                history.push("/");
             } else {
                 setUserName("");
                 setPassword("");
@@ -47,5 +50,3 @@ function Login() {
 }
 
 export default Login;
-
-

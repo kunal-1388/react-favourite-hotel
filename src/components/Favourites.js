@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useContext }  from "react";
 import "../styles/Hotel.css";
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
 import "../styles/MainPage.css";
+import { LoginContext } from "../Context/LoginContext";
+
 function Favourites() {
+    const { setIsLogin } = useContext(LoginContext);
+
     const myFavouritesList =
         JSON.parse(window.localStorage.getItem("favourites")) || [];
 
@@ -25,6 +29,8 @@ function Favourites() {
         window.localStorage.removeItem("username");
         window.localStorage.removeItem("password");
         window.localStorage.removeItem("favourites");
+        setIsLogin(false)
+
     }
 
     return (
@@ -32,16 +38,11 @@ function Favourites() {
             <Navbar
                 links={[
                     ["Go Back", "/main"],
-                    ["Logout", "/"],
+                    ["Logout", "/",handleSignOut],
                 ]}
-                handleSignOut={handleSignOut}
+                
             />
-            {/* <div>
-
-                <Link to="/" onClick={handleSignOut}>
-                    Logout
-                </Link>
-            </div> */}
+            
             <div style={styles}>
                 {myFavouritesList.map((hotel) => {
                     return (

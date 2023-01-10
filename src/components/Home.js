@@ -4,6 +4,7 @@ import Navbar from "./Navbar";
 import { hotelData } from "../../utils/hotelData.js";
 import "../styles/Hotel.css";
 function Home() {
+    const selectedHotelData = hotelData.slice(0, 5);
     return (
         <div>
             <Navbar
@@ -13,7 +14,7 @@ function Home() {
                 ]}
             />
             <div id="main">
-                {hotelData.map((hotel) => {
+                {selectedHotelData.map((hotel) => {
                     return (
                         <div className="card">
                             <div className="card-image">
