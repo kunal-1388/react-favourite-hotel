@@ -4,9 +4,8 @@ import "../styles/Navbar.css";
 import { LoginContext } from "../Context/LoginContext";
 function Navbar(props) {
     const { isLogin } = useContext(LoginContext);
-    console.log(isLogin);
-    const links = props.links.filter((pair) => {
-        if (pair[0] === "Login" && isLogin === true) {
+    const links = props.links.filter((item) => {
+        if (item[0] === "Login" && isLogin === true) {
             return false;
         }
         return true;
@@ -40,21 +39,6 @@ function Navbar(props) {
                             </Link>
                         );
                     })}
-
-                    {/* <li className="nav-link">
-                        <Link to={pointsTo1} id={link1}>
-                            {link1}
-                        </Link>
-                    </li>
-                    <li className="nav-link">
-                        <Link
-                            to={pointsTo2}
-                            id={link2}
-                            onClick={props.handleSignOut}
-                        >
-                            {link2}
-                        </Link>
-                    </li> */}
                 </ul>
             </div>
         </nav>

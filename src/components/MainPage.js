@@ -20,7 +20,7 @@ function MainPage() {
         <div>
             <Navbar
                 links={[
-                    ["My Favourites", "/favourites"],
+                    ["Favourites", "/favourites"],
                     ["Logout", "/", handleSignOut],
                 ]}
             />
