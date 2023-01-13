@@ -9,7 +9,7 @@ describe("Redirect to login page when the user is not logged in", () => {
 });
 
 // 2. Design the navbar component in such a way that it takes an array of arrays as a props in
-// which the first element of each array element displays the text to be displayed for the link
+// which the first element of each array element is the text to be displayed for the link
 // , the second element is the address to which the link should point and the third link should be
 // any on click functions if any that should be executed when the user clicks on the link
 

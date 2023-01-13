@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/Hotel.css";
 function Hotel(props) {
     const { id, name, location, price, img } = props.data;
     console.log(name, location, price, img);
-
+    const [inActive, setInActive] = useState(false);
     function handleClick(e) {
         let savedList =
             JSON.parse(window.localStorage.getItem("favourites")) || [];
@@ -15,6 +15,8 @@ function Hotel(props) {
                 JSON.stringify(savedList)
             );
         }
+
+        e.target.classList.add("inactive");
     }
 
     return (
@@ -27,7 +29,7 @@ function Hotel(props) {
                 <span className="location"> {location}</span>
                 <h4>Rs. {price} per night</h4>
             </div>
-            <button className="button" onClick={handleClick}>
+            <button className={`button`} onClick={handleClick}>
                 Add to Favourites
             </button>
         </div>

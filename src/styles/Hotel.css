@@ -59,3 +59,9 @@ img{
   /* transform: rotate3d(1, 1, 0.1, 45deg); */
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.6);
 }
+
+
+.inactive{
+  pointer-events: none;
+  text-decoration: line-through;
+}
