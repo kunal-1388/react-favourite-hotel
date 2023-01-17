@@ -1,4 +1,4 @@
-import React, { useContext }  from "react";
+import React, { useContext } from "react";
 import "../styles/Hotel.css";
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
@@ -23,14 +23,14 @@ function Favourites() {
         const newArray = savedList.filter((item) => item.id != id);
         window.localStorage.setItem("favourites", JSON.stringify(newArray));
         e.target.parentElement.remove();
+        localStorage.setItem(id, true);
     }
 
     function handleSignOut() {
         window.localStorage.removeItem("username");
         window.localStorage.removeItem("password");
         window.localStorage.removeItem("favourites");
-        setIsLogin(false)
-
+        setIsLogin(false);
     }
 
     return (
@@ -38,11 +38,10 @@ function Favourites() {
             <Navbar
                 links={[
                     ["Back", "/main"],
-                    ["Logout", "/",handleSignOut],
+                    ["Logout", "/", handleSignOut],
                 ]}
-                
             />
-            
+
             <div style={styles}>
                 {myFavouritesList.map((hotel) => {
                     return (
@@ -60,7 +59,11 @@ function Favourites() {
                             </div>
                             <button
                                 id={hotel.id}
-                                className="button"
+                                className={`button ${
+                                    localStorage.getItem(hotel.id) === false
+                                        ? "inactive"
+                                        : ""
+                                }`}
                                 onClick={handleClick}
                             >
                                 Delete

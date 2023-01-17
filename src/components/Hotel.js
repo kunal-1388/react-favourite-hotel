@@ -15,7 +15,7 @@ function Hotel(props) {
                 JSON.stringify(savedList)
             );
         }
-
+        localStorage.setItem(id,false);
         e.target.classList.add("inactive");
     }
 

@@ -262,3 +262,41 @@ describe("checking for Navbar in the Favourites component", () => {
         cy.get("#Login");
     });
 });
+
+// 9. When the user adds a hotel to "Favourites" then the "add to favourite" button for that
+// hotel should be disabled and the button text should have "line-through" text and when the hotel is removed from
+// the "Favourites" list then the "add to favourite" button should be enabled and the "line-through"
+// effect on the button text should be removed
+
+describe("Checking for the 'Add to Favourites' button for the hotels to be disabled when they are added to favourites and to be enabled again when they are removed from favourites", () => {
+    it("Checking for the 'Add to Favourites' button for the hotels to be disabled when they are added to favourites and to be enabled again when they are removed from favourites", () => {
+        cy.visit("http://localhost:3000/");
+        cy.get("#Login");
+        cy.get("#Login").click();
+        cy.get("#username").type("a");
+        cy.get("#password").type("1");
+        cy.get("#submit").click();
+        cy.location("pathname").should("eq", "/");
+        cy.get("#Main").click();
+        cy.location("pathname").should("eq", "/main");
+        cy.get(".card").should("have.length", 15);
+
+        cy.get(".button").each(($el, index, $list) => {
+            cy.wrap($el).should("not.be.disabled");
+        });
+        cy.get(".button").each(($el, index, $list) => {
+            cy.wrap($el).click();
+        });
+        cy.get(".button").each(($el, index, $list) => {
+            cy.wrap($el).should("have.css", "pointer-events", "none");
+        });
+        cy.get("#Favourites").click();
+        cy.get("button").each(($el, index, $list) => {
+            cy.wrap($el).click();
+        });
+        cy.get("#Back").click();
+        cy.get(".button").each(($el, index, $list) => {
+            cy.wrap($el).should("not.be.disabled");
+        });
+    });
+});
